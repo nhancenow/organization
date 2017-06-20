@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityDefinitions author="Saroj" module="domain">
+	<entityDefinition name="BaseEntity" abstract="true"
+		global="true">
+		<metaAttributes>
+			<attribute type="Long">id</attribute>
+			<attribute type="String" isUnique="true">guid</attribute>
+			<attribute type="String">entityType</attribute>
+			<attribute type="String">version</attribute>
+			<attribute type="String">tenantId</attribute>
+			<attribute type="String">createdByUser</attribute>
+			<attribute type="String">lastModifiedByUser</attribute>
+			<attribute type="Date">createdDate</attribute>
+			<attribute type="Date">lastModifiedDate</attribute>
+		</metaAttributes>
+	</entityDefinition>
+</entityDefinitions>

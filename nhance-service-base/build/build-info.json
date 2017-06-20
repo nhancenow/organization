@@ -1,0 +1,57 @@
+{
+  "version" : "1.0.1",
+  "name" : "nhance-service-base",
+  "number" : "1497953370068",
+  "type" : "GRADLE",
+  "buildAgent" : {
+    "name" : "Gradle",
+    "version" : "3.5"
+  },
+  "agent" : {
+    "name" : "Gradle",
+    "version" : "3.5"
+  },
+  "started" : "2017-06-20T15:39:30.055+0530",
+  "durationMillis" : 164,
+  "principal" : "Saroj",
+  "artifactoryPrincipal" : "admin",
+  "artifactoryPluginVersion" : "Unknown",
+  "vcs" : [ ],
+  "licenseControl" : {
+    "runChecks" : false,
+    "includePublishedArtifacts" : false,
+    "autoDiscover" : false,
+    "licenseViolationsRecipientsList" : "",
+    "scopesList" : ""
+  },
+  "modules" : [ {
+    "id" : "com.nhance.service:nhance-service-base:1.0.0.SNAPSHOT",
+    "artifacts" : [ {
+      "type" : "jar",
+      "sha1" : "32d6ad69d4885b1a46010c8a05e652ae60865671",
+      "md5" : "1e3d90209dfd9027524258f319f3a3c0",
+      "name" : "nhance-service-base-1.0.0.SNAPSHOT.jar"
+    }, {
+      "type" : "pom",
+      "sha1" : "ac938201aa81b54e78cf38bfd0323529f03c632b",
+      "md5" : "80866545f91a8cbc510c6e01a608440a",
+      "name" : "nhance-service-base-1.0.0.SNAPSHOT.pom"
+    } ],
+    "excludedArtifacts" : [ ],
+    "dependencies" : [ {
+      "type" : "jar",
+      "sha1" : "b02ee014fc26b81a854064aa53cb645efc4f3099",
+      "md5" : "bc5ffbbaaf9b6076088b7be4c9dd0817",
+      "id" : "com.nhance.bom:nhance-bom-base:1.0.0.SNAPSHOT",
+      "scopes" : [ "compileClasspath" ]
+    } ]
+  } ],
+  "governance" : {
+    "blackDuckProperties" : {
+      "runChecks" : false,
+      "includePublishedArtifacts" : false,
+      "autoCreateMissingComponentRequests" : false,
+      "autoDiscardStaleComponentRequests" : false
+    }
+  }
+}

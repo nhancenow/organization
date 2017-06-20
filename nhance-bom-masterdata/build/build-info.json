@@ -1,0 +1,237 @@
+{
+  "version" : "1.0.1",
+  "name" : "nhance-bom-masterdata",
+  "number" : "1497879599211",
+  "type" : "GRADLE",
+  "buildAgent" : {
+    "name" : "Gradle",
+    "version" : "3.5"
+  },
+  "agent" : {
+    "name" : "Gradle",
+    "version" : "3.5"
+  },
+  "started" : "2017-06-19T19:09:59.200+0530",
+  "durationMillis" : 236,
+  "principal" : "Saroj",
+  "artifactoryPrincipal" : "admin",
+  "artifactoryPluginVersion" : "Unknown",
+  "vcs" : [ ],
+  "licenseControl" : {
+    "runChecks" : false,
+    "includePublishedArtifacts" : false,
+    "autoDiscover" : false,
+    "licenseViolationsRecipientsList" : "",
+    "scopesList" : ""
+  },
+  "modules" : [ {
+    "id" : "com.nhance.bom:nhance-bom-masterdata:1.0.0.SNAPSHOT",
+    "artifacts" : [ {
+      "type" : "jar",
+      "sha1" : "0f528342436cc87d980ef5c0f9db4d056ed2497e",
+      "md5" : "5f4f6a842387214b93c679f5e5e933a3",
+      "name" : "nhance-bom-masterdata-1.0.0.SNAPSHOT.jar"
+    }, {
+      "type" : "pom",
+      "sha1" : "b4ad5fa59a08369a56d8415f74f17087784b7276",
+      "md5" : "0b2b70162165723c4e3751a53c3bae30",
+      "name" : "nhance-bom-masterdata-1.0.0.SNAPSHOT.pom"
+    } ],
+    "excludedArtifacts" : [ ],
+    "dependencies" : [ {
+      "type" : "jar",
+      "sha1" : "b02ee014fc26b81a854064aa53cb645efc4f3099",
+      "md5" : "bc5ffbbaaf9b6076088b7be4c9dd0817",
+      "id" : "com.nhance.bom:nhance-bom-base:1.0.0.SNAPSHOT",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "fb73b84d983296818be591dc64a26b1ee6b1e491",
+      "md5" : "9f87cfb2f86b9339d805e042ca972037",
+      "id" : "com.nhance.bom:nhance-bom-entity:1.0.0.SNAPSHOT",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "7ad235823c89a73b61482486abea3afea1daf0e3",
+      "md5" : "9ba6a60562ca6010db70755a9f82f5d6",
+      "id" : "org.springframework.data:spring-data-neo4j:4.1.3.RELEASE",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "fb18766b576aa6632bcfe9a20a023cbd52bf9769",
+      "md5" : "7b98dcb67a8ac9fe2697d10bf123cba9",
+      "id" : "org.hibernate:hibernate-validator:5.2.4.Final",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "4465fda9834ab27eac2a76f9a378738d15a9b4fa",
+      "md5" : "1c080b84a1d9ddc8c1bb2765bfd9bd39",
+      "id" : "com.fasterxml.jackson.core:jackson-annotations:2.8.1",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "8613ae82954779d518631e05daa73a6a954817d5",
+      "md5" : "4c257f52462860b62ab3cdab45f53082",
+      "id" : "javax.validation:validation-api:1.1.0.Final",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "fedf11b3d4665a434b554a5891fe7f208f029f45",
+      "md5" : "841756c617979782d7f4f708a04f05de",
+      "id" : "org.jboss.logging:jboss-logging:3.2.1.Final",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "dbbd699a1486ad0f2ed6f5af6cfed66acacb9056",
+      "md5" : "b5d30c1dc9ad3943f8b4c002a7c8bd64",
+      "id" : "com.fasterxml:classmate:1.1.0",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "6a39d70a484cbb1dcd76639c01325a729ed2193e",
+      "md5" : "e02899d0210353f87dc697f19aee1989",
+      "id" : "org.neo4j:neo4j-ogm-core:2.0.5",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "1ea4c02033a2560283df170544a0b180bfe9f1c3",
+      "md5" : "153d9161df7a003e73cdcd95a5fd3424",
+      "id" : "org.neo4j:neo4j-ogm-http-driver:2.0.5",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "b1cddcb19373671d0752b0261baf9154d969aab9",
+      "md5" : "870b3fa6dcb4df9d1835a9f569b22e4a",
+      "id" : "org.springframework.data:spring-data-commons:1.12.3.RELEASE",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "4de111782a6fb315d6f39eacf22fa8168f51062b",
+      "md5" : "2cf165beb48fdcd22d87420e6c8e7d8a",
+      "id" : "org.springframework:spring-context:4.2.8.RELEASE",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "b64d7823a8dc1876fcacfa79dee77f77bad6be5e",
+      "md5" : "700acd329024558c861bbbbaa24a42cb",
+      "id" : "org.springframework:spring-tx:4.2.8.RELEASE",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "139535a69a4239db087de9bab0bee568bf8e0b70",
+      "md5" : "c9be56284a92dcb2576679282eff80bf",
+      "id" : "org.slf4j:slf4j-api:1.7.21",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "331b564a3a42f002a0004b039c1c430da89062cd",
+      "md5" : "49956e8cf1ce48b1d8933c2d9b975d61",
+      "id" : "org.slf4j:jcl-over-slf4j:1.7.21",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "d65a988d96286e3b5c2be60ba9fd463972767cf9",
+      "md5" : "963cb6e1ce150494b4d08233082043ce",
+      "id" : "org.neo4j:neo4j-ogm-api:2.0.5",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "bade54c4a0dd2e097bf73e016a47c8fac60ba5e3",
+      "md5" : "d48c27bfc9137bb427db19d0a034c8dd",
+      "id" : "org.neo4j:neo4j-ogm-compiler:2.0.5",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "5fe28b9518e58819180a43a850fbc0dd24b7c050",
+      "md5" : "8667a442ee77e509fbe8176b94726eb2",
+      "id" : "org.apache.commons:commons-lang3:3.4",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "a4cf4688fe1c7e3a63aa636cc96d013af537768e",
+      "md5" : "45af6a8e5b51d5945de6c7411e290bd1",
+      "id" : "org.apache.commons:commons-collections4:4.1",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "733db77aa8d9b2d68015189df76ab06304406e50",
+      "md5" : "e0a45df625cb96b69505e59bb25a0189",
+      "id" : "org.apache.httpcomponents:httpclient:4.5.2",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "b1b6ea3b7e4aa4f492509a4952029cd8e48019ad",
+      "md5" : "7f97854dc04c119d461fed14f5d8bb96",
+      "id" : "commons-io:commons-io:2.4",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "924f861005d8b33978dea6c81020965a635d08ba",
+      "md5" : "f3f2704410a20c221d0c4929c03a331d",
+      "id" : "org.springframework:spring-core:4.2.8.RELEASE",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "4917f6ed94d7534f7f6dd67216cdff9443dd0a08",
+      "md5" : "436116620605b0586a16dd8fbce1390f",
+      "id" : "org.springframework:spring-beans:4.2.8.RELEASE",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "ae926bf991bdf5894f52e4f1e9710c5f94656fc4",
+      "md5" : "c5e36f10e064ab3bcf80401b2334401c",
+      "id" : "org.springframework:spring-aop:4.2.8.RELEASE",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "2db993c6f4b155100f45d742366941b984bbdf9c",
+      "md5" : "1924f0be6165f95e4f406f6a0d367d8a",
+      "id" : "org.springframework:spring-expression:4.2.8.RELEASE",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "14d88822bca655de7aa6ed3e4c498d115505710a",
+      "md5" : "fe2fa55315372a617430b94099234572",
+      "id" : "com.fasterxml.jackson.core:jackson-databind:2.7.1",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "4b95f4897fa13f2cd904aee711aeafc0c5295cd8",
+      "md5" : "353cf6a2bdba09595ccfa073b78c7fcb",
+      "id" : "commons-codec:commons-codec:1.10",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "b31526a230871fbe285fbcbe2813f9c0839ae9b0",
+      "md5" : "e7776f2b03a4c62d691a90d3c68c93c0",
+      "id" : "org.apache.httpcomponents:httpcore:4.4.4",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "4bfc12adfe4842bf07b657f0369c4cb522955686",
+      "md5" : "040b4b4d8eac886f6b4a2a3bd2f31b00",
+      "id" : "commons-logging:commons-logging:1.2",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "0235ba8b489512805ac13a8f9ea77a1ca5ebe3e8",
+      "md5" : "04177054e180d09e3998808efa0401c7",
+      "id" : "aopalliance:aopalliance:1.0",
+      "scopes" : [ "compileClasspath" ]
+    }, {
+      "type" : "jar",
+      "sha1" : "4127b62db028f981e81caa248953c0899d720f98",
+      "md5" : "c913a011db719632e1e357ed46e31c51",
+      "id" : "com.fasterxml.jackson.core:jackson-core:2.7.1",
+      "scopes" : [ "compileClasspath" ]
+    } ]
+  } ],
+  "governance" : {
+    "blackDuckProperties" : {
+      "runChecks" : false,
+      "includePublishedArtifacts" : false,
+      "autoCreateMissingComponentRequests" : false,
+      "autoDiscardStaleComponentRequests" : false
+    }
+  }
+}

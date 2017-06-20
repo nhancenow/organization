@@ -1,0 +1,14 @@
+.gradle
+/build/
+/bin/
+*.bin
+*.lock
+
+# Java class files
+*.class
+
+#Eclipse
+*.classpath
+*.project
+*.settings
+.settings/

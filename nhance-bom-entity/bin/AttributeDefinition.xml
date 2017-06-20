@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityDefinitions author="Saroj" module="domain">
+<entityDefinition name="AttributeDefinition" global="true">
+  <extends>
+    <extend>BaseEntity</extend>
+  </extends>
+  <attributes>
+    <attribute type="String" mandatory="true">attributeName</attribute>
+	<attribute type="String" values="String,Date,Decimal,Number">dataType</attribute>
+    <attribute type="String">displayName</attribute>
+	<attribute type="boolean">required</attribute>
+	<attribute type="boolean">isUserDefined</attribute>
+    <attribute type="boolean">mandatory</attribute>
+	<attribute type="Integer">minLength</attribute>
+	<attribute type="Integer">maxLength</attribute>
+  </attributes>
+</entityDefinition>
+<entityDefinition name="AttributeValue" global="true">
+  <extends>
+    <extend>BaseEntity</extend>
+  </extends>
+  <attributes>
+    <attribute type="String">name</attribute>
+	<attribute type="String">value</attribute>
+  </attributes>
+</entityDefinition>
+</entityDefinitions>

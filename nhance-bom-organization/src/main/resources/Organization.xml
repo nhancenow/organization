@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entityDefinitions module="enterprise" author="Saroj">
+<entityDefinition name="Enterprise">
+  <extends>
+    <extend>BaseEntity</extend>
+  </extends>
+  <attributes>
+    <attribute type="String" unique = "true" mandatory="true">enterpriseCode</attribute>
+    <attribute type="String">enterpriseName</attribute>
+	<attribute type="String">dunsNumber</attribute>
+    <attribute type="String">doingBusinessAs</attribute>
+    <attribute type="String" values="public,private">organisationType</attribute>
+	<attribute type="Date">financialYearStartDate</attribute>
+	<attribute type="Date">financialYearEndDate</attribute>
+	<attribute type="String">taxId</attribute>
+	<attribute type="boolean">taxExemption</attribute>
+	<attribute type="String">glCode</attribute>
+    <attribute type="String" values="Pending,Active">status</attribute>
+	<attribute type="boolean">isTenant</attribute>
+    <attribute type="boolean">active</attribute>
+  </attributes>
+  
+  <relations>
+    <relation name="ENTERPRISE_TEMPLATE" relatedEntity="EnterpriseTemplate" version="1.0" multiplicity="one-to-one"/>
+	<relation name="PARENT_ENTERPRISE" relatedEntity="Enterprise" version="1.0" multiplicity="one-to-one"/>
+	<relation name="LINKED_ENTERPRISE" relatedEntity="Enterprise" version="1.0" multiplicity="one-to-many"/>
+	<relation name="USER_DEFINED_VALUE" relatedEntity="AttributeValue" version="1.0" multiplicity="one-to-many" module="domain"/>
+	<relation name="PRIMARY_ADDRESS" relatedEntity="Address" version="1.0" multiplicity="one-to-one" module="address"/>
+	<relation name="COMMUNICATION_ADDRESS" relatedEntity="Address" version="1.0" multiplicity="one-to-one" module="address"/>
+	<relation name="HEAD_OFFICE_ADDRESS" relatedEntity="Address" version="1.0" multiplicity="one-to-one" module="address"/>
+    <relation name="PRIMARY_CONTACT" relatedEntity="Contact" version="1.0" multiplicity="one-to-one" module="contact"/>
+	<relation name="SECONDARY_CONTACT" relatedEntity="Contact" version="1.0" multiplicity="one-to-one" module="contact"/>
+    <!--<relation name="CURRENCY" relatedEntity="Currency" version="1.0" multiplicity="one-to-many" module="currency"/>
+	<relation name="TIMEZONE" relatedEntity="Timezone" version="1.0" multiplicity="one-to-one" />  -->
+    <relation name="TENANT" relatedEntity="Tenant" version="1.0" multiplicity="one-to-one" module="tenant"/>
+    <relation name="HAS_COUNTRY" relatedEntity="Country" version="1.0" multiplicity="one-to-many" module="country"/>
+    </relations>
+</entityDefinition>
+
+<entityDefinition name="EnterpriseTemplate" global="true">
+  <extends>
+    <extend>BaseEntity</extend>
+  </extends>
+  <attributes>
+    <attribute type="String" unique = "true" mandatory="true">enterpriseType</attribute>
+    <attribute type="String" values="Pending,Active">status</attribute>
+    <attribute type="boolean">active</attribute>
+  </attributes>
+  
+  <relations>
+    <relation name="ATTRIBUTE_DEFINITION" relatedEntity="AttributeDefinition" version="1.0" multiplicity="one-to-many" module="domain"/>
+  </relations>
+</entityDefinition>
+</entityDefinitions>
