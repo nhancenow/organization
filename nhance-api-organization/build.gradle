@@ -40,7 +40,7 @@ artifactory {
     contextUrl = "${artifactory_contextUrl}" 
     publish {
         repository {
-            repoKey = 'libs-release-local'
+            repoKey = 'ext-release-local'
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
@@ -52,7 +52,7 @@ artifactory {
     }
     resolve {
         repository {
-            repoKey = 'libs-release'
+            repoKey = 'ext-release-local'
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
@@ -78,17 +78,22 @@ ext {
 	slf4jVersion = '1.7.25'
 	springVersion = '4.3.8.RELEASE'
 	log4jVersion = '1.2.9'
-	idPrefix = 'api'
-	neo4jDriverVersion = '2.0.5'
-	commonCollectionVersion = '3.2.2'
-	hibernateValidatorVersion = '5.2.4.Final'
-	springDataNeo4jVersion = '4.1.3.RELEASE'
+	neo4jDriverVersion = '2.1.1'
 	mapStructVersion = '1.2.0.Beta3'
+	springDataNeo4jVersion = '4.2.0.RELEASE'
+	springDataRestVersion = '2.5.2.RELEASE'
+	commonCollectionVersion = '3.2.2'
+	idPrefix = 'api'
 }
 
 allprojects {
   group = 'com.nhance.api'
   version = "$version"
+}
+
+configurations {
+    compile.exclude module: 'log4j-over-slf4j'
+    compile.exclude module: 'neo4j-lucene-index'
 }
 
 dependencies {
@@ -97,28 +102,24 @@ dependencies {
 	compile "com.nhance.bom:nhance-bom-address:$version"
 	compile "com.nhance.bom:nhance-bom-user:$version"
 	compile "com.nhance.bom:nhance-bom-masterdata:$version"
-	compile ("com.nhance.api:nhance-api-address:$version") {
-		exclude group: 'org.neo4j', module: 'neo4j-ogm-api'
-	}
-	compile ("com.nhance.api:nhance-api-masterdata:$version") {
-		exclude group: 'org.neo4j', module: 'neo4j-ogm-api'
-	}
-	compile ("com.nhance.common:nhance-common-neo4j:$version") {
-		exclude group: 'org.neo4j', module: 'neo4j-ogm-api'
-	}
+	compile "com.nhance.api:nhance-api-address:$version"
+	compile "com.nhance.api:nhance-api-masterdata:$version"
 	
 	compile "log4j:log4j:$log4jVersion"
 	compile "org.slf4j:slf4j-api:$slf4jVersion"
-	compile "org.slf4j:slf4j-simple:$slf4jVersion"
 	compile "commons-collections:commons-collections:$commonCollectionVersion"
-	compile "org.mapstruct:mapstruct-jdk8:$mapStructVersion"
+	
+	compile "org.springframework:spring-core:$springVersion"
+	compile "org.springframework:spring-beans:$springVersion"
+	compile "org.springframework:spring-context:$springVersion"
+    compile "org.mapstruct:mapstruct-jdk8:$mapStructVersion"
     compile "org.mapstruct:mapstruct-processor:$mapStructVersion"
     compile "org.mapstruct:mapstruct:$mapStructVersion"
-	compile ( "org.springframework:spring-test:$springVersion" ) {
-  		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
- 	}
+	compile "org.springframework.data:spring-data-neo4j:$springDataNeo4jVersion"
+   	compile "org.neo4j:neo4j-ogm-embedded-driver:$neo4jDriverVersion"
+	compile "org.neo4j:neo4j-ogm-bolt-driver:$neo4jDriverVersion"
+	compile "org.neo4j:neo4j:$neo4jDriverVersion"
 	
+	testCompile "org.springframework:spring-test:$springVersion"
    	testCompile "junit:junit:$junitVersion"
-   	testCompile "org.neo4j:neo4j-ogm-embedded-driver:$neo4jDriverVersion"
-	testCompile "org.neo4j:neo4j-ogm-bolt-driver:$neo4jDriverVersion"
 }

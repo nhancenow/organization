@@ -25,10 +25,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.nhance.api.address.repository.AddressRepository;
 import com.nhance.api.masterdata.repository.MasterdataRepository;
 import com.nhance.api.organization.repository.CustomerRepository;
 import com.nhance.api.organization.repository.OrganizationRepository;
@@ -66,13 +71,23 @@ public class CustomerRepositoryTest {
 	@Autowired
 	private OrganizationRepository organizationRepository;
 	
+	/** The address repository. */
+	@Autowired
+	private AddressRepository addressRepository;
+	
+	/**
+	 * Sets the up.
+	 */
 	@Before
 	public void setUp() {
 		buildMasterData();
 	}
 	
+	/**
+	 * Delete data.
+	 */
 	@After
-	public void deleteData() {
+	public void cleanUp() {
 		customerRepository.deleteAll();
 		organizationRepository.deleteAll();
 		masterdataRepository.deleteCountry();
@@ -81,9 +96,13 @@ public class CustomerRepositoryTest {
 		masterdataRepository.deleteProductCategory();
 		masterdataRepository.deleteManufacturer();
 		masterdataRepository.deleteSequenceStore();
+		addressRepository.deleteAll();
 	}
 	
 	
+	/**
+	 * Adds the customer.
+	 */
 	@Test
 	public void addCustomer() {
 		Customer customer = new Customer();
@@ -123,7 +142,7 @@ public class CustomerRepositoryTest {
 		address.setCity("city");
 		address.setPinCode("pinCode");
 		address.setStatus(OrganizationStatus.ACTIVE.getCode());
-		masterdataRepository.save(address);
+		addressRepository.save(address);
 		customer.setOrganizationAddress(address);
 		
 		Set<ProductCategory> productCategories = masterdataRepository
@@ -135,7 +154,7 @@ public class CustomerRepositoryTest {
 				.findByManufacturer(new ArrayList<String>(Arrays.asList("Samsung", "LG")));
 		if(CollectionUtils.isNotEmpty(manufacturers))
 			customer.setManufacturers(manufacturers);
-		organizationRepository.save(customer);
+		customerRepository.save(customer);
 		Assert.assertNotNull(customer.getOrganizationCode());
 		
 	}
@@ -147,6 +166,18 @@ public class CustomerRepositoryTest {
 	public void loadCustomer() {
 		Customer customer = customerRepository.findByOrganizationCode("10000001");
 		Assert.assertNotNull(customer);
+		Assert.assertEquals("10000001", customer.getOrganizationCode());
+	}
+	
+	/**
+	 * View customer.
+	 */
+	@Test
+	@Transactional
+	public void viewCustomer() {
+		Pageable pageable = new PageRequest(0, 10);
+		Page<Customer> customers = customerRepository.findAll(pageable);
+		Assert.assertNotNull(customers);
 	}
 	
 	/**
@@ -171,7 +202,7 @@ public class CustomerRepositoryTest {
 	private void buildMasterData() {
 		SequenceStore sequenceStore = new SequenceStore();
 		sequenceStore.setSequenceCode(SequenceDefinition.ORGANIZATION_CODE.getCategoryCode());
-		sequenceStore.setSequenceNumber(1L);
+		sequenceStore.setSequenceNumber(2L);
 		masterdataRepository.save(sequenceStore);
 		
 		Country country = new Country();
@@ -233,6 +264,20 @@ public class CustomerRepositoryTest {
 		manufacturer.setCode("MAN105");
 		manufacturer.setName("Propure");
 		masterdataRepository.save(manufacturer);
+		
+		Customer customer = new Customer();
+		customer.setOrganizationCode("10000001");
+		customer.setOrganizationName("Customer");
+		customer.setOrganizationType(OrganizationType.BRAND.getCode());
+		customer.setOrganizationEmail("saroj3030@gmail.com");
+		customer.setOrganizationPhone("9620521051");
+		customer.setOrganizationStatus(OrganizationStatus.ONBOARDED.getCode());
+		customer.setOrganizationOnboardDate(new Date());
+		customer.setOrganizationOnboardedBy("Saroj");
+		customer.setOrganizationLogo("https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2000px-Samsung_Logo.svg.png");
+		customer.setOrganizationOnboardedBy("saroj");
+		
+		customerRepository.save(customer);
 	}
 
 }

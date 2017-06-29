@@ -14,7 +14,6 @@ package com.nhance.api.organization.test.repository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -146,10 +145,10 @@ public class OrganizationRepositoryTest {
 	/**
 	 * View organization.
 	 */
-	public void viewOrganization() {
+	/*public void viewOrganization() {
 		Collection<Organization> graph = organizationRepository.graph(5);
 		Assert.assertNotNull(graph);
-	}
+	}*/
 	
 	/**
 	 * Load organization.

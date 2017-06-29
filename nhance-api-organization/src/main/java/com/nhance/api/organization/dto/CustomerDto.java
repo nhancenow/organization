@@ -14,12 +14,15 @@ package com.nhance.api.organization.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.nhance.api.masterdata.dto.ManufacturerDto;
 import com.nhance.api.masterdata.dto.ProductCategoryDto;
 
 /**
  * The Class CustomerDto.
  */
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include = As.PROPERTY, property = "@class")
 public class CustomerDto extends OrganizationDto {
 	
 	/** The product category. */

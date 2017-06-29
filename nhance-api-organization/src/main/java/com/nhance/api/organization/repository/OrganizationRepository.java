@@ -59,8 +59,8 @@ public interface OrganizationRepository extends GraphRepository<Organization> {
 	 * @param limit the limit
 	 * @return the collection
 	 */
-	@Query("MATCH (o:Organization) RETURN o LIMIT {limit}")
-	Collection<Organization> graph(@Param("limit") int limit);
+	/*@Query("MATCH (o:Organization) RETURN o LIMIT {limit}")
+	Collection<Organization> graph(@Param("limit") int limit);*/
 
 	
 	
