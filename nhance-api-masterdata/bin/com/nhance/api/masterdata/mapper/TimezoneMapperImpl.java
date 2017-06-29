@@ -6,8 +6,8 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-06-20T15:38:41+0530",
-    comments = "version: 1.1.0.CR1, compiler: javac, environment: Java 1.8.0_65 (Oracle Corporation)"
+    date = "2017-06-28T16:10:53+0530",
+    comments = "version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_65 (Oracle Corporation)"
 )
 public class TimezoneMapperImpl implements TimezoneMapper {
 

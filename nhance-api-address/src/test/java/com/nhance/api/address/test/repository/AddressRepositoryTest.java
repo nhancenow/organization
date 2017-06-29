@@ -39,6 +39,9 @@ public class AddressRepositoryTest {
 	@Autowired
 	private AddressRepository addressRepository;
 	
+	/**
+	 * Clean up.
+	 */
 	@After
 	public void cleanUp() {
 		addressRepository.deleteAll();

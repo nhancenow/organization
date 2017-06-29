@@ -12,42 +12,72 @@
 */
 package com.nhance.api.masterdata.test.setup;
 
+import org.neo4j.ogm.session.SessionFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
+import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import com.nhance.common.neo4j.Neo4jConfigurationNhance;
 
 /**
  * The Class MasterdataTestSetup.
  */
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.nhance")
+@ComponentScan(basePackages = { "com.nhance.bom", "com.nhance.api" })
 @Configuration
-@EnableNeo4jRepositories(basePackages = "com.nhance")
-@Profile("test")
-public class MasterdataTestSetup extends Neo4jConfigurationNhance {
-	
+@EnableNeo4jRepositories(basePackages = { "com.nhance.bom", "com.nhance.api" })
+@ActiveProfiles(profiles = "test")
+@PropertySource("classpath:masterdata-test.properties")
+public class MasterdataTestSetup {
+
+	/** The server database uri. */
+	@Value("${neo4j.db.uri}")
+	private String serverDatabaseUri;
+
+	/** The username. */
+	@Value("${neo4j.db.username}")
+	private String username;
+
+	/** The password. */
+	@Value("${neo4j.db.password}")
+	private String password;
+
 	/**
-	 * The Class Config.
+	 * Session factory.
+	 *
+	 * @return the session factory
 	 */
-	@Configuration
-	@PropertySource("classpath:masterdata-test.properties")
-	static class Config {
-		
-		/**
-		 * Property sources placeholder configurer.
-		 *
-		 * @return the property sources placeholder configurer
-		 */
-		@Bean
-		public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-			return new PropertySourcesPlaceholderConfigurer();
-		}
+	@Bean
+	public SessionFactory sessionFactory() {
+		return new SessionFactory(configuration(), "com.nhance.bom");
 	}
+
+	/**
+	 * Configuration.
+	 *
+	 * @return the org.neo 4 j.ogm.config. configuration
+	 */
+	@Bean
+	public org.neo4j.ogm.config.Configuration configuration() {
+		org.neo4j.ogm.config.Configuration configuration = new org.neo4j.ogm.config.Configuration();
+		configuration.driverConfiguration().setCredentials(username, password).setURI(serverDatabaseUri);
+		return configuration;
+	}
+
+	/**
+	 * Transaction manager.
+	 *
+	 * @return the neo 4 j transaction manager
+	 * @throws Exception the exception
+	 */
+	@Bean
+	public Neo4jTransactionManager transactionManager() throws Exception {
+		return new Neo4jTransactionManager(sessionFactory());
+	}
+	
 }
