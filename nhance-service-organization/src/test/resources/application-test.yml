@@ -1,0 +1,15 @@
+## TOMCAT CONFIGURATION
+server:
+  port: 8588
+  
+## NEO4J CONFIGURATIONS
+neo4j:
+  db:
+    uri: bolt://localhost
+    driver: org.neo4j.ogm.drivers.http.driver.HttpDriver
+    username: neo4j
+    password: aaA@123
+    
+## SERVICE CONFIGURATION
+service:
+  ip: http://localhost:8588/
