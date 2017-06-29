@@ -1,18 +1,9 @@
-# Gradle
-# ------
-.gradle
-.gradle/*
-/bin
-/build
-/buildSrc/build
-/subprojects/*/build
-/subprojects/docs/src/samples/*/*/build
-
-# Eclipse
-#-----------
-*.classpath
-*.project
-*.settings
-/bin
-/bin/com
-/subprojects/*/bin
+/.gradle/
+/bin/
+/build/
+/gradle/
+/.settings/
+/.classpath
+/.project
+/gradlew
+/gradlew.bat
