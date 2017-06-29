@@ -89,9 +89,14 @@ allprojects {
   version = "$version"
 }
 
+configurations {
+    compile.exclude module: 'log4j-over-slf4j'
+    compile.exclude module: 'neo4j-lucene-index'
+}
+
 dependencies {
-	compile("org.springframework.data:spring-data-neo4j:$springDataNeo4jVersion")
-   	compile("org.hibernate:hibernate-validator:$hibernateValidatorVersion")
+	compile "org.springframework.data:spring-data-neo4j:$springDataNeo4jVersion"
+   	compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
    	testCompile "org.springframework:spring-test:$springVersion"
    	testCompile "org.neo4j:neo4j-ogm-embedded-driver:$neo4jDriverVersion"
    	testCompile "junit:junit:$junitVersion"
