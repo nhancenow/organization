@@ -24,7 +24,6 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: "com.jfrog.artifactory"
 apply plugin: 'maven-publish'
@@ -33,7 +32,7 @@ artifactory {
     contextUrl = "${artifactory_contextUrl}" 
     publish {
         repository {
-            repoKey = 'libs-release-local'
+            repoKey = 'ext-release-local'
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
@@ -45,7 +44,7 @@ artifactory {
     }
     resolve {
         repository {
-            repoKey = 'libs-release'
+            repoKey = 'ext-release-local'
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
@@ -62,10 +61,14 @@ publishing {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 ext {
 	junitVersion = '4.12'
-	hibernateValidatorVersion = "5.2.4.Final"
-	springDataNeo4jVersion = '4.1.3.RELEASE'
+	hibernateValidatorVersion = '5.2.4.Final'
+	springDataNeo4jVersion = '4.2.0.RELEASE'
 	idPrefix = 'bom'
 }
 
@@ -82,5 +85,6 @@ dependencies {
 	
 	compile "org.springframework.data:spring-data-neo4j:$springDataNeo4jVersion"
 	compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+	
 	testCompile "junit:junit:$junitVersion"
 }
