@@ -9,8 +9,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.nhance.InitOrganization;
 import com.nhance.api.organization.dto.OrganizationDto;
+import com.nhance.service.organization.InitOrganization;
 
 @ContextConfiguration(classes = InitOrganization.class)
 @RunWith(SpringRunner.class)

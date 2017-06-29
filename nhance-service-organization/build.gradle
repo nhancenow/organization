@@ -19,21 +19,22 @@ buildscript {
     dependencies {
         //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'idea'
 apply plugin: 'maven'
 apply plugin: "com.jfrog.artifactory"
 apply plugin: 'maven-publish'
+apply plugin: 'org.springframework.boot'
 
 artifactory {
     contextUrl = "${artifactory_contextUrl}" 
     publish {
         repository {
-            repoKey = 'libs-release-local'
+            repoKey = 'ext-release-local'
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
@@ -45,7 +46,7 @@ artifactory {
     }
     resolve {
         repository {
-            repoKey = 'libs-release'
+            repoKey = 'ext-release-local'
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
@@ -62,15 +63,22 @@ publishing {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 ext {
 	junitVersion = '4.12'
-	log4jVersion = '1.2.9'
-	hibernateValidatorVersion = '5.4.1.Final'
 	slf4jVersion = '1.7.25'
 	springVersion = '4.3.8.RELEASE'
-	springRestVersion = '2.6.4.RELEASE'
+	log4jVersion = '1.2.9'
+	neo4jDriverVersion = '2.1.1'
+	mapStructVersion = '1.1.0.Final'
+	springDataNeo4jVersion = '4.2.0.RELEASE'
+	springDataRestVersion = '2.6.4.RELEASE'
 	springBootVerssion = '1.5.2.RELEASE'
 	gsonVersion = '2.8.0'
+	idPrefix = 'service'
 }
 
 allprojects {
@@ -86,19 +94,12 @@ dependencies {
 	
 	compile "log4j:log4j:$log4jVersion"
 	compile "org.slf4j:slf4j-api:$slf4jVersion"
-	compile "org.springframework.data:spring-data-rest-core:$springRestVersion"
-	compile "org.springframework.data:spring-data-jpa:1.11.4.RELEASE"
-	compile "javax.persistence:com.springsource.javax.persistence:2.0.0"
-	compile ("org.springframework.boot:spring-boot-starter-web:$springBootVerssion"){
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-	}
-	compile ("org.springframework.boot:spring-boot-starter-data-rest:$springBootVerssion"){
-  		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
- 	}
+	compile "org.springframework.data:spring-data-rest-core:$springDataRestVersion"
+	compile "org.springframework.boot:spring-boot-starter-data-rest:$springBootVerssion"
+	compile "org.neo4j:neo4j-ogm-bolt-driver:$neo4jDriverVersion"
+	compile "org.neo4j:neo4j-ogm-embedded-driver:$neo4jDriverVersion"
 	
-	testCompile ("org.springframework.boot:spring-boot-starter-test:$springBootVerssion"){
-  		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
- 	}
+	testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVerssion"
    	testCompile "junit:junit:$junitVersion"
    	testCompile "com.google.code.gson:gson:$gsonVersion"
 }
