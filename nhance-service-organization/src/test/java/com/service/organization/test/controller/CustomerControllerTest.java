@@ -30,6 +30,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.nhance.api.address.dto.AddressDto;
 import com.nhance.api.address.repository.AddressRepository;
@@ -66,6 +68,11 @@ public class CustomerControllerTest {
 	/** The serice base ip. */
 	@Value("${service.ip}")
     private String sericeBaseIp;
+	
+	@Autowired
+	private WebApplicationContext context;
+
+	private MockMvc mvc;
 	
 	/** The rest template. */
 	@Autowired
