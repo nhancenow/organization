@@ -190,6 +190,7 @@ public class CustomerControllerTest {
 	 */
 	@Before
 	public void setUp() {
+		
 		SequenceStore sequenceStore = new SequenceStore();
 		sequenceStore.setSequenceCode(SequenceDefinition.ORGANIZATION_CODE.getCategoryCode());
 		sequenceStore.setSequenceNumber(2L);
